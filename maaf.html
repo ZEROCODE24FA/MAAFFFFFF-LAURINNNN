@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maafin Aku</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3,#ffb199);
+    overflow:hidden;
+}
+
+/* Background Blur Circle */
+.circle{
+    position:absolute;
+    width:300px;
+    height:300px;
+    background:rgba(255,255,255,0.15);
+    border-radius:50%;
+    filter:blur(10px);
+}
+
+.circle:nth-child(1){
+    top:-100px;
+    left:-100px;
+}
+
+.circle:nth-child(2){
+    bottom:-120px;
+    right:-120px;
+}
+
+.container{
+    position:relative;
+    width:90%;
+    max-width:500px;
+    padding:50px 40px;
+    background:rgba(255,255,255,0.15);
+    border-radius:30px;
+    backdrop-filter:blur(12px);
+    text-align:center;
+    color:white;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        transform:translateY(40px);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+
+.emoji{
+    font-size:80px;
+    margin-bottom:20px;
+    animation:shake 2s infinite;
+}
+
+@keyframes shake{
+    0%{transform:rotate(0deg);}
+    25%{transform:rotate(10deg);}
+    50%{transform:rotate(-10deg);}
+    75%{transform:rotate(10deg);}
+    100%{transform:rotate(0deg);}
+}
+
+h1{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.buttons{
+    position:relative;
+    height:200px;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+/* YES BUTTON */
+#yesBtn{
+    background:#22c55e;
+    color:white;
+    padding:18px 45px;
+    font-size:22px;
+    border-radius:50px;
+    position:absolute;
+    left:50%;
+    transform:translateX(-120%);
+    z-index:2;
+}
+
+/* NO BUTTON */
+#noBtn{
+    background:#ef4444;
+    color:white;
+    padding:18px 45px;
+    font-size:22px;
+    border-radius:50px;
+    position:absolute;
+    left:50%;
+    transform:translateX(20%);
+    z-index:1;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+#message{
+    margin-top:30px;
+    font-size:24px;
+    display:none;
+    animation:fadeIn 1s ease;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="circle"></div>
+<div class="circle"></div>
+
+<div class="container">
+
+    <div class="emoji">🥺</div>
+
+    <h1>Maafin Aku Ya.. Laurinnn?</h1>
+
+    <p>
+        Aku sadar aku salah dan bikin kamu kecewa.
+        Aku benar-benar minta maaf.
+        Kasih aku kesempatan buat memperbaiki semuanya ❤️
+    </p>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes 💖</button>
+        <button id="noBtn">No 😢</button>
+    </div>
+
+    <div id="message">
+        YEAYYY MAKASIIIH ❤️✨
+    </div>
+
+</div>
+
+<script>
+
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const message = document.getElementById("message");
+
+let scale = 1;
+
+noBtn.addEventListener("click", () => {
+
+    scale += 0.4;
+
+    yesBtn.style.transform =
+    `translateX(-120%) scale(${scale})`;
+
+    yesBtn.style.zIndex = 10;
+
+    if(scale > 3){
+
+        yesBtn.style.position = "fixed";
+        yesBtn.style.top = "0";
+        yesBtn.style.left = "0";
+        yesBtn.style.width = "100vw";
+        yesBtn.style.height = "100vh";
+        yesBtn.style.borderRadius = "0";
+        yesBtn.style.fontSize = "80px";
+        yesBtn.style.transform = "scale(1)";
+    }
+
+});
+
+yesBtn.addEventListener("click", () => {
+
+    document.querySelector(".container").innerHTML = `
+        <div style="font-size:90px;">😭❤️</div>
+        <h1 style="margin-top:20px;">Makasih Banyakkkk</h1>
+        <p style="margin-top:20px;font-size:22px;line-height:1.8;">
+            Aku janji bakal jadi lebih baik lagi buat kamu 💖
+        </p>
+    `;
+
+});
+
+</script>
+
+</body>
+</html>
